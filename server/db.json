@@ -1,0 +1,170 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Hotel Cheraton Center",
+      "address": "Calle Gran Vía 123, Lima",
+      "email": "info@hotelmc.com",
+      "phone": "+34900111222",
+      "status": "active",
+      "createdAt": "2024-01-10T08:00:00",
+      "adminId": 3
+    },
+    {
+      "id": 2,
+      "name": "Barcelona Beach Resort",
+      "address": "Paseo Marítimo 45, Barcelona",
+      "email": "info@barcelonabeach.com",
+      "phone": "+34900333444",
+      "status": "active",
+      "createdAt": "2024-02-15T10:30:00",
+      "adminId": 6
+    }
+  ],
+  "subscriptionPlans": [
+    {
+      "id": 1,
+      "name": "Premium",
+      "maxRooms": 200,
+      "maxStaff": 50,
+      "maxIotDevices": 500,
+      "price": 999.99,
+      "currency": "USD"
+    },
+    {
+      "id": 2,
+      "name": "Basic",
+      "maxRooms": 100,
+      "maxStaff": 20,
+      "maxIotDevices": 250,
+      "price": 499.99,
+      "currency": "USD"
+    }
+  ],
+  "hotelSubscriptions": [
+    {
+      "id": 1,
+      "hotelId": 1,
+      "subscriptionPlanId": 1,
+      "status": "active",
+      "startDate": "2024-01-10T08:00:00",
+      "endDate": "2025-01-10T08:00:00"
+    },
+    {
+      "id": 2,
+      "hotelId": 2,
+      "subscriptionPlanId": 2,
+      "status": "active",
+      "startDate": "2024-02-15T10:30:00",
+      "endDate": "2025-02-15T10:30:00"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "hotelId": 1,
+      "firstName": "Juan",
+      "lastName": "Pérez",
+      "email": "juan.perez@email.com",
+      "password": "juan123",
+      "phone": "+34600123456",
+      "role": "guest",
+      "createdAt": "2025-01-15T10:30:00"
+    },
+    {
+      "id": 2,
+      "hotelId": 1,
+      "firstName": "María",
+      "lastName": "González",
+      "email": "maria.gonzalez@email.com",
+      "password": "maria123",
+      "phone": "+34600789012",
+      "role": "guest",
+      "createdAt": "2025-02-02T14:15:00"
+    }
+  ],
+  "rooms": [
+    {
+      "hotelId": "1",
+      "number": "101",
+      "type": "Deluxe",
+      "status": "Available",
+      "price": 150,
+      "floor": 1,
+      "id": 1
+    },
+    {
+      "hotelId": "1",
+      "number": "103",
+      "type": "Suite",
+      "status": "Occupied",
+      "price": 180,
+      "floor": 1,
+      "id": 2
+    },
+    {
+      "hotelId": "2",
+      "number": "106",
+      "type": "Suite",
+      "status": "Maintenance",
+      "price": 200,
+      "floor": 1,
+      "id": 3
+    }
+  ],
+  "roomIotDevices": [],
+  "iotDevices": [],
+  "bookings": [],
+  "serviceRequests": [],
+  "userDevicePreferences": [
+    {
+      "id": 1,
+      "userId": 1,
+      "deviceId": 2,
+      "customName": "My Reading Light",
+      "overrides": {
+        "brightness": 85,
+        "color": "cool"
+      },
+      "lastUpdated": "2025-05-10T08:30:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "Toallas enviadas",
+      "message": "Se han entregado las toallas adicionales a tu habitación.",
+      "type": "info",
+      "read": false,
+      "createdAt": "2025-05-02T09:30:00"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "title": "Mantenimiento iniciado",
+      "message": "El técnico ha llegado a revisar el aire acondicionado.",
+      "type": "alert",
+      "read": true,
+      "createdAt": "2025-05-02T11:00:00"
+    }
+  ],
+  "feedback": [
+    {
+      "id": 1,
+      "userId": 1,
+      "hotelId": 1,
+      "rating": 4.5,
+      "comment": "Excelente servicio, muy buena atención.",
+      "createdAt": "2025-05-06T10:00:00"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "hotelId": 1,
+      "rating": 4,
+      "comment": "Habitación limpia, aunque la cama era un poco dura.",
+      "createdAt": "2025-05-08T12:30:00"
+    }
+  ]
+}
