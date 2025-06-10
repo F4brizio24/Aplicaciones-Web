@@ -8,88 +8,43 @@
       <Button label="Add Room" icon="pi pi-plus" @click="openNewRoomForm" />
     </div>
 
-    <DataTable :value="rooms" class="p-datatable-sm" dataKey="id">
-      <Column field="hotelId" :header="t('dashboard.rooms_management.hotelId')" />
-      <Column field="number" :header="t('dashboard.rooms_management.room')" />
-      <Column field="type" :header="t('dashboard.rooms_management.type')" />
-      <Column field="status" :header="t('dashboard.rooms_management.status')" />
-      <Column field="price" :header="t('dashboard.rooms_management.price')" />
-      <Column field="floor" :header="t('dashboard.rooms_management.floor')" />
-      <Column :header="t('dashboard.rooms_management.actions')">
-        <template #body="slotProps">
-          <Button icon="pi pi-pencil" class="p-button-sm p-button-text" @click="editRoom(slotProps.data)" />
-          <Button icon="pi pi-trash" class="p-button-sm p-button-text text-red-500" @click="deleteRoomById(slotProps.data.id)" />
-        </template>
-      </Column>
-    </DataTable>
-    <!-- Dialog -->
-    <Dialog v-model:visible="roomDialog" modal header="Room Form" :style="{ width: '400px' }">
-      <form @submit.prevent="saveRoom">
-        <div class="p-fluid">
-          <div class="field mb-3">
-            <label>Hotel Id</label>
-            <InputText v-model="roomForm.hotelId" required />
-          </div>
-          <div class="field mb-3">
-            <label>Room Number</label>
-            <InputText v-model="roomForm.number" required />
-          </div>
-          <div class="field mb-3">
-            <label>Type</label>
-            <InputText v-model="roomForm.type" required />
-          </div>
-          <div class="field mb-3">
-            <label>Status</label>
-            <Dropdown v-model="roomForm.status" :options="statusOptions" placeholder="Select status" />
-          </div>
-          <div class="field mb-3">
-            <label>Price</label>
-            <InputNumber v-model="roomForm.price" mode="currency" currency="USD" locale="en-US" />
-          </div>
-          <div class="field mb-3">
-            <label>Floor</label>
-            <InputNumber v-model="roomForm.floor" />
-          </div>
-        </div>
+    <rooms-list-table
+        :rooms="rooms"
+        @edit="editRoom"
+        @delete="deleteRoomById"
+    />
 
-        <div class="flex justify-content-end gap-2 mt-4">
-          <Button label="Cancel" class="p-button-text" @click="roomDialog = false" />
-          <Button label="Save" type="submit" />
-        </div>
-      </form>
-    </Dialog>
+    <rooms-list-form
+        v-model:visible="roomDialog"
+        :room="roomForm"
+        :editing-id="editingId"
+        @save="saveRoom"
+        @cancel="roomDialog = false"
+    />
   </div>
 </template>
 
 <script setup>
-
-import { useI18n } from 'vue-i18n'
-const { t } = useI18n()
-import { ref, reactive, onMounted } from 'vue'
-import { getRooms, deleteRoom, createRoom, updateRoom } from '../services/roomsService.js'
-
-import DataTable from 'primevue/datatable'
-import Column from 'primevue/column'
 import Button from 'primevue/button'
-import Dialog from 'primevue/dialog'
-import InputText from 'primevue/inputtext'
-import Dropdown from 'primevue/dropdown'
-import InputNumber from 'primevue/inputnumber'
+import { ref, reactive, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { getRooms, deleteRoom, createRoom, updateRoom } from '../services/roomsService.js'
+import RoomsListTable from '../components/rooms-list-table.component.vue'
+import RoomsListForm from '../components/rooms-list-form.component.vue'
 
+const { t } = useI18n()
 const rooms = ref([])
 const roomDialog = ref(false)
 const editingId = ref(null)
 
 const roomForm = reactive({
-  hotelId: '', // opcional, si se maneja un hotel específico
+  hotelId: '',
   number: '',
   type: '',
   status: '',
   price: 0,
   floor: 1
 })
-
-const statusOptions = ['Available', 'Occupied', 'Cleaning', 'Maintenance']
 
 const fetchRooms = async () => {
   rooms.value = await getRooms()
@@ -137,7 +92,7 @@ onMounted(fetchRooms)
 
 <style scoped>
 .hotel-title {
-  color: #1a237e; /* Azul oscuro elegante */
+  color: #1a237e;
   letter-spacing: 1px;
 }
 .text-primary {

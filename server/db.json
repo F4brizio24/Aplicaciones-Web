@@ -101,15 +101,6 @@
       "price": 180,
       "floor": 1,
       "id": 2
-    },
-    {
-      "hotelId": "2",
-      "number": "106",
-      "type": "Suite",
-      "status": "Maintenance",
-      "price": 200,
-      "floor": 1,
-      "id": 3
     }
   ],
   "roomIotDevices": [],
