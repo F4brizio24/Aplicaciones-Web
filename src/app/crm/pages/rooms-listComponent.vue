@@ -17,9 +17,8 @@
     <rooms-list-form
         v-model:visible="roomDialog"
         :room="roomForm"
-        :editing-id="editingId"
+        :status-options="statusOptions"
         @save="saveRoom"
-        @cancel="roomDialog = false"
     />
   </div>
 </template>
@@ -45,6 +44,8 @@ const roomForm = reactive({
   price: 0,
   floor: 1
 })
+
+const statusOptions = ['Available', 'Occupied', 'Cleaning', 'Maintenance']
 
 const fetchRooms = async () => {
   rooms.value = await getRooms()

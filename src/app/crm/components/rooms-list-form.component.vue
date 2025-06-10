@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-model:visible="visible" modal header="Room Form" :style="{ width: '400px' }">
+  <Dialog v-model:visible="roomDialog" modal header="Room Form" :style="{ width: '400px' }" @update:visible="$emit('update:modelValue', $event)">
     <form @submit.prevent="$emit('save')">
       <div class="p-fluid">
         <div class="field mb-3">
@@ -29,7 +29,7 @@
       </div>
 
       <div class="flex justify-content-end gap-2 mt-4">
-        <Button label="Cancel" class="p-button-text" @click="$emit('cancel')" />
+        <Button label="Cancel" class="p-button-text" @click="closeDialog" />
         <Button label="Save" type="submit" />
       </div>
     </form>
@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import Dropdown from 'primevue/dropdown'
@@ -45,22 +45,14 @@ import InputNumber from 'primevue/inputnumber'
 import Button from 'primevue/button'
 
 const props = defineProps({
-  visible: {
-    type: Boolean,
-    required: true
-  },
-  room: {
-    type: Object,
-    required: true
-  },
-  editingId: {
-    type: [String, Number, null],
-    default: null
-  }
+  modelValue: Boolean,
+  room: Object,
+  statusOptions: Array
 })
 
-const emit = defineEmits(['update:visible', 'save', 'cancel'])
+const emit = defineEmits(['update:modelValue', 'save'])
 
-const visible = ref(props.visible)
-const statusOptions = ref(['Available', 'Occupied', 'Cleaning', 'Maintenance'])
+const closeDialog = () => {
+  emit('update:modelValue', false)
+}
 </script>
