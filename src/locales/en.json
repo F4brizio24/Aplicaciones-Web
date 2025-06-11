@@ -28,7 +28,10 @@
       "status": "Status",
       "price": "Price",
       "floor": "Floor",
-      "actions": "Actions"
+      "actions": "Actions",
+      "rooms_management": "Rooms Management",
+      "rooms": "Rooms",
+      "add_room": "Add Room"
     },
 
     "charts": {
