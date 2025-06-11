@@ -5,7 +5,10 @@
       <div class="hotel-title text-xl font-bold">
         Hotel Cheraton - {{ t('dashboard.rooms_management.rooms') }}
       </div>
-      <Button label="Add Room" icon="pi pi-plus" @click="openNewRoomForm" />
+      <Button class="add_button" @click="openNewRoomForm">
+        <i class="pi pi-plus" style="margin-right: 0.5rem;"></i>
+        {{ t('dashboard.rooms_management.add_room') }}
+      </Button>
     </div>
 
     <rooms-list-table
@@ -98,5 +101,12 @@ onMounted(fetchRooms)
 }
 .text-primary {
   color: #2196f3;
+}
+
+.add_button {
+  width:  auto;
+  padding: 10px;
+  font-family: Arial;
+  font-weight: bold;
 }
 </style>
