@@ -1,4 +1,3 @@
-// src/model/booking.entity.js
 export default class Booking {
     constructor({
                     id,
@@ -10,10 +9,6 @@ export default class Booking {
                     status,
                     totalPrice,
                     paymentStatus,
-                    specialRequests,
-                    createdAt,
-                    preferences = {},
-                    appliedDevicePreferences = []
                 }) {
         this.id = id;
         this.userId = userId;
@@ -24,12 +19,6 @@ export default class Booking {
         this.status = status;
         this.totalPrice = totalPrice;
         this.paymentStatus = paymentStatus;
-        this.specialRequests = specialRequests;
-        this.createdAt = new Date(createdAt);
-        this.preferences = preferences;
-        this.appliedDevicePreferences = appliedDevicePreferences;
-
-        // Estos campos vienen del servicio, no de aquí
         this.user = null;
         this.room = null;
     }
@@ -53,10 +42,6 @@ export default class Booking {
             status: this.status,
             totalPrice: this.totalPrice,
             paymentStatus: this.paymentStatus,
-            specialRequests: this.specialRequests,
-            createdAt: this.createdAt.toISOString(),
-            preferences: this.preferences,
-            appliedDevicePreferences: this.appliedDevicePreferences
         };
     }
 }

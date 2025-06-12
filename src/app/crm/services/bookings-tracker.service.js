@@ -1,10 +1,9 @@
-// src/services/booking.service.js
 import axios from 'axios'
-import Booking from '../model/booking.entity'
+import Booking from '../model/bookings-tracker.entity.js'
 
-const API_URL = 'http://localhost:3001/api/v1/bookings'
-const USERS_URL = 'http://localhost:3001/api/v1/users'
-const ROOMS_URL = 'http://localhost:3001/api/v1/rooms'
+const API_URL = 'https://api-chafa.vercel.app/api/v1/bookings'
+const USERS_URL = 'https://api-chafa.vercel.app/api/v1/users'
+const ROOMS_URL = 'https://api-chafa.vercel.app/api/v1/rooms'
 
 /**
  * Obtiene todas las reservas + usuarios + habitaciones y une los datos

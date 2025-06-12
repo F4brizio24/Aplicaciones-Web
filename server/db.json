@@ -123,7 +123,30 @@
   ],
   "roomIotDevices": [],
   "iotDevices": [],
-  "bookings": [],
+  "bookings": [
+    {
+      "id": 1,
+      "userId": 1,
+      "hotelId": 1,
+      "roomId": 1,
+      "checkInDate": "2025-05-01T14:00:00",
+      "checkOutDate": "2025-05-05T12:00:00",
+      "status": "active",
+      "totalPrice": 480,
+      "paymentStatus": "paid"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "hotelId": 1,
+      "roomId": 2,
+      "checkInDate": "2025-05-02T15:30:00",
+      "checkOutDate": "2025-05-07T11:00:00",
+      "status": "active",
+      "totalPrice": 480,
+      "paymentStatus": "paid"
+    }
+  ],
   "serviceRequests": [],
   "userDevicePreferences": [
     {
