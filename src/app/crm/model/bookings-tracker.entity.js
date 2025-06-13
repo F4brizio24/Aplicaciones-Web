@@ -22,26 +22,4 @@ export default class Booking {
         this.user = null;
         this.room = null;
     }
-
-    get guestName() {
-        return this.user ? `${this.user.firstName} ${this.user.lastName}` : 'Desconocido';
-    }
-
-    get roomNumber() {
-        return this.room?.number || 'N/A';
-    }
-
-    toJSON() {
-        return {
-            id: this.id,
-            userId: this.userId,
-            hotelId: this.hotelId,
-            roomId: this.roomId,
-            checkInDate: this.checkInDate.toISOString(),
-            checkOutDate: this.checkOutDate.toISOString(),
-            status: this.status,
-            totalPrice: this.totalPrice,
-            paymentStatus: this.paymentStatus,
-        };
-    }
 }
